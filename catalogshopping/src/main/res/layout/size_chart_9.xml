@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:text="Size measurement guide"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:text="Since it is an overseas product, it is important to measure the dimensions correctly in order to order the right size for your body."
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:text="To select the correct dimensions, check the measurement points of each item and compare the dimensions of the same area." />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"
+        android:text="How to measure size"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:text="Dimensions shown in size chart are based on nude size. When measuring the size, it is better to let other people measure. When measuring the size with a tape measure, do not over tighten. Please measure the dimensions as accurately as possible.It is not as roughly as possible."
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"
+        android:text="Size measurement position"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:text="A. Chest / Bust: Horizontal measurement across the scapula from the top bust\nB. Waist: Measures the waistline directly above the radius\nC. Hips: Measure horizontally through the widest convex around the waist\nD. Neck circumference (Neck): The upper part of the feather passes through the vocal cords and is detected by a tape measure but with a margin of measurement.
+E. Overarm: Measure to the outermost part of both shoulders\nF. Skirt Length: measured straight down from the waist\nG. Height: Take off your shoes and measure straight from the tip of your head to your heel\nH. Arm Length: Place your hands on the hips, elbow angle of 90 degrees, and measure from shoulder to elbow to wrist\nI. Outseam: Measure from waist to ankle\nJ. Inseam: Measures to the length of pants you want from the inside of your thigh to the back of your feet"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>

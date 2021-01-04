@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Auth</string>
+
+    <string name="api_grant_type">password</string>
+    <string name="api_client_id">2</string>
+    <string name="api_client_secret">y6St1JohrTN7wpyCEDbnboJ2xAdtXqsHwS0aSs2H</string>
+    <string name="api_scope">*</string>
+</resources>

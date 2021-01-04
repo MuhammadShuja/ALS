@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorTheme">@color/midnight_blue</color>
+    <color name="colorThemeDark">@color/midnight_blue</color>
+    <color name="colorAccent">@color/gold</color>
+
+    <color name="midnight_blue">#0D2153</color>
+    <color name="gold">#DF9E26</color>
+    <color name="emerald">#5BB85D</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="white_60">#a0ffffff</color>
+    <color name="white_two">#efefef</color>
+    <color name="white_three">#ebebeb</color>
+    <color name="white_four">#e0e0e0</color>
+    <color name="white_five">#dadada</color>
+    <color name="grey">#AAAAAA</color>
+
+    <color name="black">#000000</color>
+    <color name="blue">#6A9BC4</color>
+    <color name="red">#B00020</color>
+
+    <color name="bg">#f1f5f9</color>
+</resources>

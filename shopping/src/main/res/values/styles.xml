@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ShoppingTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/midnight_blue</item>
+        <item name="colorPrimaryDark">@color/midnight_blue</item>
+        <item name="colorAccent">@color/gold</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light" />
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="EditTextTheme">
+        <!-- Used for the bottom line when not selected / focused -->
+        <item name="colorControlNormal">#9e9e9e</item>
+        <item name="colorAccent">#9e9e9e</item>
+        <!-- colorControlActivated & colorControlHighlight use the colorAccent color by default -->
+    </style>
+</resources>

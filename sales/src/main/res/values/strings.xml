@@ -1,0 +1,6 @@
+<resources>
+    <string name="currency_symbol">₩</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="google_places_api_key">AIzaSyAGqChWS0g-7WG5_ozzM8SFyzPrQxlTLFU</string>
+</resources>

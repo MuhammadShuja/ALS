@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.alllinkshare.user">
+
+    <application>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <activity android:name=".ui.activities.EditCouponActivity"
+            android:theme="@style/UserTheme"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activities.ProfileActivity"
+            android:theme="@style/UserTheme"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activities.OrdersActivity"
+            android:theme="@style/UserTheme" />
+    </application>
+
+</manifest>

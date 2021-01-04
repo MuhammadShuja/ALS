@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "936040396149",
+    "project_id": "alllinkshare",
+    "storage_bucket": "alllinkshare.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936040396149:android:86ce53a4b843cac6668f3c",
+        "android_client_info": {
+          "package_name": "com.alllinkshare.pushnotifications"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936040396149-otsa1m623qieal17d7al0219li9vini6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnRkNgdzl7n6leaZ_yAsz0e2KNH1FZFU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936040396149-otsa1m623qieal17d7al0219li9vini6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.alllinkshare.catalog">
+
+    <application>
+        <activity
+            android:name="com.alllinkshare.catalog.ui.activities.CategoriesActivity"
+            android:theme="@style/CatalogTheme" />
+    </application>
+
+</manifest>

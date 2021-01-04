@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CarDealingTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/mine_shaft_grey</item>
+        <item name="colorPrimaryDark">@color/bg</item>
+        <item name="colorSecondary">@color/punch</item>
+        <item name="colorAccent">@color/punch</item>
+    </style>
+</resources>

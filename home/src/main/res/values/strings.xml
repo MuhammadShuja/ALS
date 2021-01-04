@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Catalog</string>
+    <string name="title_activity_nav">NavActivity</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_home_tab_all">All</string>
+    <string name="fragment_home_tab_play">Play</string>
+    <string name="fragment_home_tab_als">ALS</string>
+    <string name="fragment_home_tab_news">News</string>
+    <string name="fragment_home_tab_map">Map</string>
+    <string name="fragment_home_bottom_tab_office_share">Office Share</string>
+    <string name="fragment_home_bottom_tab_car_sharing">Car Sharing</string>
+    <string name="fragment_home_bottom_tab_golf">Golf</string>
+    <string name="fragment_home_bottom_tab_shopping">Shopping</string>
+    <string name="fragment_home_bottom_tab_freelancer">Freelancer</string>
+    <string name="fragment_home_bottom_tab_jobs">Jobs</string>
+    <string name="fragment_home_bottom_tab_books">Books</string>
+    <string name="fragment_home_bottom_tab_radio">Radio</string>
+    <string name="fragment_home_bottom_tab_travel">Travel</string>
+    <string name="fragment_home_bottom_tab_flowers">Flowers</string>
+    <string name="fragment_home_bottom_tab_talk_sns">Talk SNS</string>
+    <string name="fragment_home_bottom_tab_automobile">Automobile</string>
+    <string name="als_fragment_heading_recent">Recent</string>
+    <string name="als_fragment_action_close">Close</string>
+    <string name="als_fragment_heading_popular">Popular</string>
+</resources>

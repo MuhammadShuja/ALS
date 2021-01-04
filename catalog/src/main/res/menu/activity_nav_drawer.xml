@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/icon_login"
+            android:title="Login" />
+        <item
+            android:id="@+id/nav_register"
+            android:icon="@drawable/icon_register"
+            android:title="Register" />
+        <item
+            android:id="@+id/nav_coupon"
+            android:icon="@drawable/icon_coupon"
+            android:title="Coupon" />
+        <item
+            android:id="@+id/nav_favourites"
+            android:icon="@drawable/icon_favourites"
+            android:title="Favourites" />
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/icon_feedback"
+            android:title="Feedback" />
+        <item
+            android:id="@+id/nav_help_and_support"
+            android:icon="@drawable/icon_help"
+            android:title="Help &amp; support" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/icon_info"
+            android:title="About us" />
+        <item
+            android:id="@+id/nav_privacy_settings"
+            android:icon="@drawable/icon_lock"
+            android:title="Privacy settings" />
+    </group>
+</menu>

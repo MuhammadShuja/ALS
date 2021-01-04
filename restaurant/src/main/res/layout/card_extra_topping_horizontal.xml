@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/indicator"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        tools:src="@drawable/indicator_emerald"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/thumbnail"
+        tools:ignore="ContentDescription"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:maxLines="1"
+        android:ellipsize="end"
+        tools:text="Product name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/indicator"
+        app:layout_constraintEnd_toStartOf="@id/action_wrapper"/>
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:textColor="@color/gold"
+        tools:text="KRW 17000"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintStart_toEndOf="@id/thumbnail"
+        app:layout_constraintEnd_toStartOf="@id/action_wrapper"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/action_wrapper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_counter_wrapper"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="UseCompoundDrawables">
+        <ImageView
+            android:id="@+id/btn_topping_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:gravity="center"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_minus"
+            tools:ignore="ContentDescription" />
+        <TextView
+            android:id="@+id/topping_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="1dp"
+            android:textColor="@color/white"
+            android:background="@color/orange_500"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="0"/>
+        <ImageView
+            android:id="@+id/btn_topping_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:gravity="center"
+            app:srcCompat="@drawable/ic_plus"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

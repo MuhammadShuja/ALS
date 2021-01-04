@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".ui.fragments.ShoppingGuideSizeChartFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:background="@color/white">
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/size_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabBackground="@color/bg"
+            app:tabMode="scrollable"/>
+        <LinearLayout
+            android:id="@+id/size_tab_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            android:text="\u2B25 The chart shows the average value of many brand products sold overseas to meet Korean standards\n\n\u2B25 Designed to match the foreigner's body, there may be some differences depending on the country of origin, manufacturer, design, brand and personal body.\n\n\u2B25 The size information provided by the manufacturer of the product takes precedence over the typical converted number given in the chart.\n\n\u2B25 Designed to match the foreigner's body, there may be some differences depending on the country of origin, manufacturer, design, brand and personal body.\n\n\u2B25 Numerical reference table: 1 in (1 inch) = 2.54 cm / 1 ft (1 foot) = 30.48 cm"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

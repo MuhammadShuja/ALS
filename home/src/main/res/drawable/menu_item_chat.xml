@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/white_two"/>
+            <size
+                android:height="24dp"
+                android:width="24dp" />
+            <padding
+                android:left="8dp"
+                android:right="8dp"
+                android:top="8dp"
+                android:bottom="8dp"/>
+        </shape>
+    </item>
+    <item android:drawable="@drawable/icon_chat"/>
+</layer-list>

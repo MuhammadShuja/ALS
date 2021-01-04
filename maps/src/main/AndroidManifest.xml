@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.alllinkshare.maps">
+    <application>
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="My_API_Key" />
+    </application>
+</manifest>

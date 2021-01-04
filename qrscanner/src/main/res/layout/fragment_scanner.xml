@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context=".ui.fragments.ScannerFragment">
+
+    <FrameLayout
+        android:id="@+id/camera_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/semitransparent"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="@color/bg"
+        android:textColor="@color/grey"
+        android:text="Scan QR from website or seller outlet"
+        android:textSize="16sp"
+        android:layout_gravity="top"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/scannerLayout"
+        android:layout_width="256dp"
+        android:layout_height="256dp"
+        android:background="@drawable/ic_viewfinder"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <View
+            android:id="@+id/scannerBar"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/scanner"/>
+    </LinearLayout>
+</FrameLayout>

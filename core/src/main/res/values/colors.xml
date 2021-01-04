@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gold">#DF9E26</color>
+    <color name="emerald">#5BB85D</color>
+    <color name="orange_500">#ff9800</color>
+    <color name="orange_700">#ff6d00</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="white_60">#a0ffffff</color>
+    <color name="white_two">#efefef</color>
+    <color name="white_three">#ebebeb</color>
+    <color name="white_four">#e0e0e0</color>
+    <color name="white_five">#dadada</color>
+    <color name="grey">#AAAAAA</color>
+
+    <color name="black">#000000</color>
+    <color name="blue">#6A9BC4</color>
+    <color name="red">#B00020</color>
+    <color name="light_red">#FFCCCB</color>
+
+    <color name="material_green">#729B34</color>
+    <color name="material_red">#D03030</color>
+    <color name="material_grey">#455967</color>
+    <color name="material_purple">#4F339A</color>
+    <color name="material_orange">#E28C1B</color>
+    <color name="material_blue">#3B7ADE</color>
+
+    <color name="bg">#f1f5f9</color>
+</resources>
