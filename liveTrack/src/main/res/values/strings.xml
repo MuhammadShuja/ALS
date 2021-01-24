@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">track</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="google_maps_key" translatable="false">AIzaSyCBt_NpnieCbgy_rFuhh-DAYarQwlYBf2Y</string>
+    <string name="working_api">AIzaSyCBt_NpnieCbgy_rFuhh-DAYarQwlYBf2Y</string>
+
+</resources>

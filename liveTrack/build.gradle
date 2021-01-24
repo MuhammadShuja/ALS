@@ -1,0 +1,102 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation project(path: ':auth')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'id.zelory:compressor:2.1.0'
+
+// live tracking
+
+
+
+
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //Nano Task
+    implementation 'com.fabiendevos:nanotasks:1.1.0'
+
+
+    implementation 'com.google.android.libraries.places:places:2.0.0'
+    implementation group: 'com.github.seratch', name: 'java-time-backport', version: '1.0.0'
+
+
+    implementation('com.schibstedspain.android:leku:7.2.0') {
+        exclude group: 'com.google.android.gms'
+        exclude group: 'androidx.appcompat'
+    }
+    //Paper.io non-sql library
+    implementation 'io.paperdb:paperdb:2.7.1'
+    implementation 'com.google.maps.android:android-maps-utils:0.5+'
+
+//    compile files('libs/android-support-v4.jar')
+//    implementation group: 'commons-io', name: 'commons-io', version: '2.0.1'
+//    implementation "commons-io:commons-io:+"
+//    import org.apache.commons.io.IOUtils;
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+
+
+
+    implementation 'com.google.android.libraries.places:places:2.0.0'
+    implementation group: 'com.github.seratch', name: 'java-time-backport', version: '1.0.0'
+
+
+    implementation('com.schibstedspain.android:leku:7.2.0') {
+        exclude group: 'com.google.android.gms'
+        exclude group: 'androidx.appcompat'
+    }
+    //Paper.io non-sql library
+    implementation 'io.paperdb:paperdb:2.7.1'
+    implementation 'com.google.maps.android:android-maps-utils:0.5+'
+
+//    compile files('libs/android-support-v4.jar')
+//    implementation group: 'commons-io', name: 'commons-io', version: '2.0.1'
+//    implementation "commons-io:commons-io:+"
+//    import org.apache.commons.io.IOUtils;
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+
+
+
+
+
+    implementation project(path: ':core')
+  //  implementation project(path: ':user')
+
+}
