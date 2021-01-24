@@ -1,5 +1,6 @@
 package com.alllinkshare.user.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.alllinkshare.user.R;
+import com.alllinkshare.user.ui.activities.OrdersActivity;
 import com.alllinkshare.user.ui.activities.ProfileActivity;
 
 public class DashboardFragment extends Fragment {
@@ -93,14 +95,12 @@ public class DashboardFragment extends Fragment {
             }
         });
 
-        rootView.findViewById(R.id.btn_upload).setOnClickListener(new View.OnClickListener() {
+        rootView.findViewById(R.id.btn_orders).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(((ViewGroup) getView().getParent()).getId(), UploadFragment.newInstance(null, null))
-                        .commit();
-
-                ((ProfileActivity) getActivity()).setTitle(getString(R.string.user_fragment_dashboard_image_video_upload));
+                getActivity().startActivity(new Intent(
+                        getActivity(), OrdersActivity.class
+                ));
             }
         });
     }

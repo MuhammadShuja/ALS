@@ -35,6 +35,12 @@ public class RetrofitService {
 
         @GET(EndPoints.CATALOG_LISTINGS)
         Call<CatalogListingsResponse> getListings(@Query("category_id") int categoryId,
+                                                  @Query("filter") String filter,
+                                                  @Query("value") String value,
+                                                  @Query("page") int pageNumber);
+
+        @GET(EndPoints.CATALOG_SEARCH)
+        Call<CatalogListingsResponse> searchCatalog(@Query("query") String query,
                                                   @Query("page") int pageNumber);
 
         @GET(EndPoints.CATALOG_LISTING)

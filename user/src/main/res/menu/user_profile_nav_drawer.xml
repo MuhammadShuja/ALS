@@ -12,6 +12,10 @@
             android:icon="@drawable/icon_lock"
             android:title="Change credentials" />
         <item
+            android:id="@+id/nav_orders"
+            android:icon="@drawable/icon_shopping_cart"
+            android:title="My orders" />
+        <item
             android:id="@+id/nav_favourites"
             android:icon="@drawable/icon_favourites"
             android:title="My favourites" />
@@ -23,9 +27,5 @@
             android:id="@+id/nav_chat_box"
             android:icon="@drawable/ic_message_square"
             android:title="Chat box" />
-        <item
-            android:id="@+id/nav_upload"
-            android:icon="@drawable/ic_upload"
-            android:title="Image/Video upload" />
     </group>
 </menu>

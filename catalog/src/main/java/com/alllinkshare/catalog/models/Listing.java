@@ -82,6 +82,12 @@ public class Listing {
     @SerializedName("coupon")
     private String coupon;
 
+    @SerializedName("latitude")
+    private String latitude;
+
+    @SerializedName("longitude")
+    private String longitude;
+
     @SerializedName("actions")
     private List<FormAction> actions;
 
@@ -179,6 +185,14 @@ public class Listing {
 
     public String getCoupon() {
         return coupon;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
     }
 
     public List<FormAction> getActions() {

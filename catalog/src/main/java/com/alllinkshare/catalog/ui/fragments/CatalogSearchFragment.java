@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.alllinkshare.catalog.R;
+import com.alllinkshare.catalog.api.API;
+import com.alllinkshare.catalog.api.config.Listeners;
 import com.alllinkshare.catalog.models.Listing;
 import com.alllinkshare.catalog.repos.ListingRepository;
 import com.alllinkshare.catalog.ui.adapters.ListingsAdapter;
@@ -26,27 +28,28 @@ import com.alllinkshare.core.utils.GifImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListingsFragment extends Fragment {
+public class CatalogSearchFragment extends Fragment {
 
-    private int categoryId;
-    private int pageNumber = 0;
-    private String filter = "", value = "";
+    private String query;
+
+    private int currentPage = 0;
+    private int lastPage = 1;
+    private int totalItems = 0;
+    private boolean isLoading = false;
 
     private View rootView;
     private ListingsAdapter listingsAdapter;
 
     private LinearLayout loadingWrapper, emptyWrapper, contentWrapper;
 
-    private boolean isLoading = false;
-
-    public ListingsFragment() {
+    public CatalogSearchFragment() {
         // Required empty public constructor
     }
 
-    public static ListingsFragment newInstance(int categoryID) {
-        ListingsFragment fragment = new ListingsFragment();
+    public static CatalogSearchFragment newInstance(String query) {
+        CatalogSearchFragment fragment = new CatalogSearchFragment();
         Bundle args = new Bundle();
-        args.putInt(Keys.PARENT_ID, categoryID);
+        args.putString(Keys.STRING, query);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,14 +58,14 @@ public class ListingsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            categoryId = getArguments().getInt(Keys.PARENT_ID);
+            query = getArguments().getString(Keys.STRING);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_listings, container, false);
+        rootView = inflater.inflate(R.layout.fragment_catalog_search, container, false);
 
         initListings();
         loadListings();
@@ -74,7 +77,7 @@ public class ListingsFragment extends Fragment {
         listingsAdapter = new ListingsAdapter(getActivity(), new ArrayList<Listing>(), new ListingsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Listing listing) {
-                Coordinator.getCatalogNavigator().navigateToListing(listing.getId(), categoryId);
+                Coordinator.getCatalogNavigator().navigateToListing(listing.getId(), -1);
             }
 
             @Override
@@ -111,15 +114,14 @@ public class ListingsFragment extends Fragment {
                 switch (formAction.getType()){
                     case FormType.SHOPPING:
                     case FormType.FOOD_ORDER:
-                    case FormType.DAILY_NEED_ORDER:
                     case FormType.HOSPITAL_APPOINTMENT:
                         Coordinator.getCatalogNavigator()
                                 .navigateToListingCategories(
-                                        formAction.getType(), listing.getId(), categoryId);
+                                        formAction.getType(), listing.getId(), -1);
                         break;
 
                     default:
-                        BookingFormFragment.newInstance(listing.getName(), categoryId)
+                        BookingFormFragment.newInstance(listing.getName(), -1)
                                 .show(getParentFragmentManager(), "dialog");
                 }
             }
@@ -150,49 +152,31 @@ public class ListingsFragment extends Fragment {
 
         GifImageView gifImageView = rootView.findViewById(R.id.gif_image_view);
         gifImageView.setGifImageResource(R.drawable.empty);
-
-        rootView.findViewById(R.id.latest).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filter = "latest";
-                reloadListings();
-            }
-        });
-
-        rootView.findViewById(R.id.rating).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filter = "rating";
-                reloadListings();
-            }
-        });
-
-        rootView.findViewById(R.id.distance).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filter = "distance";
-                reloadListings();
-            }
-        });
     }
 
     private void loadListings(){
         if(isLoading) return;
 
+        currentPage++;
+        if(currentPage > lastPage) return;
+
         isLoading = true;
         loadingWrapper.setVisibility(View.VISIBLE);
 
-        ListingRepository.getInstance().getListings(categoryId, pageNumber, filter, value, new ListingRepository.DataListReadyListener() {
+        API.search(currentPage, query, new Listeners.ListingsListener(){
+
             @Override
-            public void onDataReady(int total, int currentPageNumber, List<Listing> listings) {
-                pageNumber = currentPageNumber;
+            public void onSuccess(List<Listing> listings, int currentPageNumber, int lastPageNumber, int totalListings) {
+                currentPage = currentPageNumber;
+                lastPage = lastPageNumber;
+                totalItems = totalListings;
 
                 listingsAdapter.addData(listings);
 
                 loadingWrapper.setVisibility(View.GONE);
                 isLoading = false;
 
-                if(total < 1){
+                if(totalItems < 1){
                     contentWrapper.setVisibility(View.GONE);
                     emptyWrapper.setVisibility(View.VISIBLE);
                 }
@@ -207,8 +191,8 @@ public class ListingsFragment extends Fragment {
         });
     }
 
-    private void reloadListings(){
-        pageNumber = 0;
+    private void reloadListings() {
+        currentPage = 0;
         isLoading = false;
         listingsAdapter.clearData();
         loadListings();

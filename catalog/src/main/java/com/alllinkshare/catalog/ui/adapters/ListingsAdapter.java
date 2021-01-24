@@ -287,7 +287,7 @@ public class ListingsAdapter extends RecyclerView.Adapter<ListingsAdapter.ViewHo
             rvItems.setAdapter(new FormActionsAdapter(mContext, formActions, new FormActionsAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(Listing.FormAction formAction) {
-                    listener.onFormAction(listing.getId(), formAction);
+                    listener.onFormAction(listing, formAction);
                 }
             }));
         }
@@ -315,6 +315,6 @@ public class ListingsAdapter extends RecyclerView.Adapter<ListingsAdapter.ViewHo
         void onStartVoiceCall(Listing listing);
         void onStartVideoCall(Listing listing);
         void onStartChat(Listing listing);
-        void onFormAction(int listingId, Listing.FormAction formAction);
+        void onFormAction(Listing listing, Listing.FormAction formAction);
     }
 }

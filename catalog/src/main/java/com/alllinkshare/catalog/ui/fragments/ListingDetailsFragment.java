@@ -125,6 +125,7 @@ public class ListingDetailsFragment extends Fragment {
             @Override
             public void onDataReady(Listing listing) {
                 initCoupon(listing.getCoupon());
+                initDirection(listing.getLatitude(), listing.getLongitude());
                 initGallery(listing.getImages());
                 initReviews(listing.getRating(), listing.getReviews());
 
@@ -175,6 +176,15 @@ public class ListingDetailsFragment extends Fragment {
 
             ((TextView) rootView.findViewById(R.id.qr_offer)).setText(coupon);
         }
+    }
+
+    private void initDirection(final String latitude, final String longitude){
+        rootView.findViewById(R.id.btn_direction).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Coordinator.getCoreNavigator().navigateToMap(latitude, longitude);
+            }
+        });
     }
 
     private void initGallery(ArrayList<Image> images){

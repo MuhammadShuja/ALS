@@ -10,13 +10,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListingsController {
-    private static final String TAG = "API/Listings";
+public class SearchController {
+    private static final String TAG = "API/Search";
 
-    public static void listings(int categoryId, int pageNumber, String filter, String value, final Listeners.ListingsListener listener){
-        Log.d(TAG, "Get listing initiated...");
+    public static void search(int pageNumber, String query, final Listeners.ListingsListener listener){
+        Log.d(TAG, "Search catalog initiated...");
 
-        RetrofitService.getClient().getListings(categoryId, filter, value, pageNumber).enqueue(new Callback<CatalogListingsResponse>() {
+        RetrofitService.getClient().searchCatalog(query, pageNumber).enqueue(new Callback<CatalogListingsResponse>() {
             @Override
             public void onResponse(Call<CatalogListingsResponse> call, Response<CatalogListingsResponse> response) {
                 if(response.isSuccessful()){
@@ -27,7 +27,7 @@ public class ListingsController {
                             response.body().getTotal());
                 }
 
-                Log.d(TAG, "Get listing completed...");
+                Log.d(TAG, "Search catalog completed...");
             }
 
             @Override

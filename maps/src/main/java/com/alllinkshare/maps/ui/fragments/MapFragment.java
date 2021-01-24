@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,31 +15,32 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapFragment extends Fragment{
+import org.w3c.dom.Text;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class MapFragment extends Fragment implements OnMapReadyCallback{
 
-    private String mParam1;
-    private String mParam2;
+    private static final String LATITUDE = "latitude";
+    private static final String LONGITUDE = "longitude";
+
+    private String latitude;
+    private String longitude;
 
     private View rootView;
-
-    private MapView mapView;
-    private GoogleMap map;
 
     public MapFragment() {
         // Required empty public constructor
     }
 
-    public static MapFragment newInstance(String param1, String param2) {
+    public static MapFragment newInstance(String latitude, String longitude) {
         MapFragment fragment = new MapFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(LATITUDE, latitude);
+        args.putString(LONGITUDE, longitude);
         fragment.setArguments(args);
         return fragment;
     }
@@ -47,8 +49,8 @@ public class MapFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            latitude = getArguments().getString(LATITUDE);
+            longitude = getArguments().getString(LONGITUDE);
         }
     }
 
@@ -58,19 +60,35 @@ public class MapFragment extends Fragment{
 
         rootView = inflater.inflate(R.layout.fragment_map, container, false);
 
-//        mapView = rootView.findViewById(R.id.mapView);
+        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
         return  rootView;
     }
 
-
+    @Override
     public void onMapReady(GoogleMap googleMap) {
         MapsInitializer.initialize(getContext());
-        //LatLng class is google provided class to get latiude and longitude of location.
+        //LatLng class is google provided class to get latitude and longitude of location.
         //GpsTracker is helper class to get the details for current location latitude and longitude.
         LatLng location = new LatLng(37.532600, 127.024612);
-        map = googleMap;
-        map.addMarker(new MarkerOptions().position(location).title("Marker position"));
-        map.moveCamera(CameraUpdateFactory.newLatLng(location));
-        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        if(!TextUtils.isEmpty(latitude) && !TextUtils.isEmpty(longitude)){
+            location = new LatLng(
+                    Double.parseDouble(latitude),
+                    Double.parseDouble(longitude)
+            );
+        }
+//        Location currentLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+        UiSettings uiSettings = googleMap.getUiSettings();
+        uiSettings.setMyLocationButtonEnabled(true);
+        uiSettings.setZoomControlsEnabled(true);
+        uiSettings.setZoomGesturesEnabled(true);
+        uiSettings.setMapToolbarEnabled(true);
+        googleMap.addMarker(new MarkerOptions().position(location).title("Marker position"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 12.0f));
     }
 }

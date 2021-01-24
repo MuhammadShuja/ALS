@@ -15,11 +15,13 @@
         android:background="@color/white_60"
         tools:ignore="DisableBaselineAlignment">
         <LinearLayout
+            android:id="@+id/latest"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="8dp"
             android:orientation="horizontal"
+            android:gravity="center"
             tools:ignore="UseCompoundDrawables">
             <ImageView
                 android:layout_width="16dp"
@@ -31,38 +33,51 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="Trending"
+                android:text="Latest"
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/grey"/>
         <LinearLayout
+            android:id="@+id/rating"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="8dp"
             android:orientation="horizontal"
+            android:gravity="center"
             tools:ignore="UseCompoundDrawables">
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                app:srcCompat="@drawable/icon_location"
-                android:layout_gravity="center_vertical"/>
+                app:srcCompat="@drawable/ic_arrow_up"
+                android:layout_gravity="center_vertical"
+                tools:ignore="ContentDescription" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="Location"
+                android:text="Rating"
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/grey"/>
         <LinearLayout
+            android:id="@+id/distance"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="8dp"
             android:orientation="horizontal"
+            android:gravity="center"
             tools:ignore="UseCompoundDrawables">
             <ImageView
                 android:layout_width="16dp"
@@ -75,28 +90,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:text="Distance"
-                android:textSize="12sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center_vertical"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="8dp"
-            android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                app:srcCompat="@drawable/icon_filter"
-                android:layout_gravity="center_vertical"
-                tools:ignore="ContentDescription" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="Filter"
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:layout_gravity="center_vertical"/>

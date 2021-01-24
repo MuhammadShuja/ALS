@@ -1,105 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:paddingTop="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
-
-    <ImageView
-        android:id="@+id/coupon_icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_gravity="center"/>
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tv_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:text="Order #"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/coupon_icon"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/reference"
+        android:id="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:textColor="@color/black"
+        tools:text="112233"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_1"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        tools:text="Men denim blue jeans"
+        app:layout_constraintTop_toBottomOf="@id/id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        tools:text="KRW 5500"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/pre_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        android:text="("
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintStart_toEndOf="@id/price"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        tools:text="3"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintStart_toEndOf="@id/pre_quantity"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/post_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/grey"
+        android:textSize="16sp"
+        android:text="items)"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintStart_toEndOf="@id/quantity"
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/black"
-        android:textSize="14sp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/coupon_icon"
-        app:layout_constraintStart_toEndOf="@id/coupon_icon"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/date"
-        app:layout_constraintStart_toEndOf="@id/coupon_icon"
-        android:layout_gravity="center"/>
-
-    <ImageView
-        android:layout_width="17dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="4dp"
-        app:layout_constraintEnd_toStartOf="@id/status"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_currency"/>
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="400"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        tools:text="10 Jan, 2020"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/btn_view_order"
+        android:id="@+id/status_pending"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:padding="2dp"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_status_pending"
+        android:text="Pending"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/status_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_status_complete"
+        android:text="Complete"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/status_active"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_status_active"
+        android:text="Active"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/btn_track_order"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="2dp"
         android:textColor="@color/black"
         android:textSize="14sp"
-        android:text="View order"
+        android:text="Track order"
         android:background="@drawable/bg_grey_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/status"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/bg"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/status"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/price"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

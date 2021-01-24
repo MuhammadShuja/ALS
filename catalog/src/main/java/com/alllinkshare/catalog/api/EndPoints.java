@@ -7,6 +7,7 @@ public class EndPoints {
 
     public static final String CATALOG_CATEGORIES = EP_API+"catalog/categories/";
     public static final String CATALOG_LISTINGS = EP_API+"catalog/listings/";
+    public static final String CATALOG_SEARCH = EP_API+"catalog/search/";
     public static final String CATALOG_LISTING = EP_API+"catalog/listings/{listing}";
     public static final String CATALOG_LISTING_CATEGORIES = EP_API+"catalog/listing-categories/{listing}";
 }

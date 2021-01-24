@@ -34,7 +34,7 @@
     <string name="user_fragment_credentials_new_password_is_required">New password is required</string>
     <string name="user_fragment_favourites_no_favourites_yet">No favourites yet</string>
     <string name="user_fragment_dashboard_my_coupons">My Coupons</string>
-    <string name="user_fragment_dashboard_image_video_upload">Upload</string>
+    <string name="user_fragment_dashboard_orders">Orders</string>
     <string name="user_fragment_dashboard">Dashboard</string>
     <string name="user_fragment_credentials_verification_code">Verification code</string>
 </resources>

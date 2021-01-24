@@ -63,7 +63,7 @@ public class LandingFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), HomeFragment.newInstance("CategoriesGridFragment"))
+                        .add(((ViewGroup) getView().getParent()).getId(), HomeFragment.newInstance("CategoriesGridFragment", null, null))
                         .commit();
             }
         });

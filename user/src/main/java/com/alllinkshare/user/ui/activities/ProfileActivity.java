@@ -17,14 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alllinkshare.auth.ui.activities.LoginActivity;
-import com.alllinkshare.core.forms.Form;
-import com.alllinkshare.core.forms.validation.ValidationRule;
 import com.alllinkshare.user.R;
 import com.alllinkshare.user.api.API;
 import com.alllinkshare.user.events.ProfileUpdateEvent;
@@ -40,13 +35,7 @@ import com.alllinkshare.user.ui.fragments.ProfileFragment;
 import com.alllinkshare.user.ui.fragments.UploadFragment;
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -176,8 +165,8 @@ public class ProfileActivity extends AppCompatActivity {
                 else if(position == R.id.nav_chat_box){
                     loadFragment("ChatFragment");
                 }
-                else if(position == R.id.nav_upload){
-                    loadFragment("UploadFragment");
+                else if(position == R.id.nav_orders){
+                    startActivity(new Intent(ProfileActivity.this, OrdersActivity.class));
                 }
                 drawerLayout.closeDrawer(GravityCompat.END);
 
@@ -241,7 +230,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
         else if("UploadFragment".equals(fragmentName)){
             fragment = UploadFragment.newInstance(null, null);
-            title = getString(R.string.user_fragment_dashboard_image_video_upload);
+            title = getString(R.string.user_fragment_dashboard_orders);
         }
         else{
             fragment = DashboardFragment.newInstance();

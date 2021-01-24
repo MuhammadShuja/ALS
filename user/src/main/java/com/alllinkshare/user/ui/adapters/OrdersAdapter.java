@@ -4,12 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.alllinkshare.user.R;
 import com.alllinkshare.user.models.Order;
-import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -46,34 +45,58 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private ImageView statusIcon;
         private TextView reference;
+        private TextView statusComplete;
+        private TextView statusPending;
+        private TextView statusActive;
+        private TextView name;
+        private TextView quantity;
+        private TextView price;
         private TextView date;
-        private TextView status;
-        private TextView amount;
+        private Button btnTrackOrder;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            statusIcon = itemView.findViewById(R.id.coupon_icon);
-            reference = itemView.findViewById(R.id.reference);
+            reference = itemView.findViewById(R.id.id);
+            statusComplete = itemView.findViewById(R.id.status_complete);
+            statusPending = itemView.findViewById(R.id.status_pending);
+            statusActive = itemView.findViewById(R.id.status_active);
+            name = itemView.findViewById(R.id.name);
+            quantity = itemView.findViewById(R.id.quantity);
+            price = itemView.findViewById(R.id.price);
             date = itemView.findViewById(R.id.date);
-            status = itemView.findViewById(R.id.status);
-            amount = itemView.findViewById(R.id.status);
+            btnTrackOrder = itemView.findViewById(R.id.btn_track_order);
         }
 
         public void bind(final Order order, final OnItemClickListener listener) {
-            Glide
-                    .with(mContext)
-                    .load(mContext.getResources().getIdentifier(order.getStatusIcon(), "drawable", mContext.getPackageName()))
-                    .into(statusIcon);
-
-            reference.setText(order.getReference());
+            reference.setText(String.valueOf(order.getId()));
+            name.setText(order.getName());
+            if(order.getStatus().equals("Pending")){
+                statusPending.setVisibility(View.VISIBLE);
+                statusComplete.setVisibility(View.GONE);
+                statusActive.setVisibility(View.GONE);
+            }
+            else if(order.getStatus().equals("Active")){
+                statusActive.setVisibility(View.VISIBLE);
+                statusPending.setVisibility(View.GONE);
+                statusComplete.setVisibility(View.GONE);
+            }
+            else{
+                statusComplete.setVisibility(View.VISIBLE);
+                statusPending.setVisibility(View.GONE);
+                statusActive.setVisibility(View.GONE);
+            }
+            quantity.setText(String.valueOf(order.getQuantity()));
+            price.setText(mContext.getResources().getString(R.string.currency_symbol)+order.getPrice());
             date.setText(order.getDate());
-            status.setText(order.getStatus());
-            amount.setText(String.valueOf(order.getTotalPrice()));
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            if(order.getStatus().equals("Active"))
+                btnTrackOrder.setVisibility(View.VISIBLE);
+            else
+                btnTrackOrder.setVisibility(View.GONE);
+
+            btnTrackOrder.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(order);
                 }

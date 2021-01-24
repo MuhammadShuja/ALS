@@ -9,6 +9,7 @@ import com.alllinkshare.user.api.controllers.CredentialsController;
 import com.alllinkshare.user.api.controllers.FavouritesController;
 import com.alllinkshare.user.api.controllers.FcmController;
 import com.alllinkshare.user.api.controllers.LocationController;
+import com.alllinkshare.user.api.controllers.OrdersController;
 import com.alllinkshare.user.api.controllers.ProfileController;
 import com.alllinkshare.user.models.Coupon;
 import com.alllinkshare.user.models.User;
@@ -105,5 +106,10 @@ public class API {
     public static void updateCoupon(Coupon coupon, Listeners.CouponListener listener){
         Log.d(TAG, "Calling update coupon endpoint...");
         CouponsController.update(coupon, listener);
+    }
+
+    public static void orders(int pageNumber, String filter, Listeners.OrdersListener listener){
+        Log.d(TAG, "Calling orders endpoint...");
+        OrdersController.orders(pageNumber, filter, listener);
     }
 }

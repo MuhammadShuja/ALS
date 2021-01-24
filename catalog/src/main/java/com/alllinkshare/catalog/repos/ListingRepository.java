@@ -30,7 +30,7 @@ public class ListingRepository {
         Log.d(TAG, "New instance created...");
     }
 
-    public void getListings(int categoryId, int pageNumber, final ListingRepository.DataListReadyListener listener){
+    public void getListings(int categoryId, int pageNumber, String filter, String value, final ListingRepository.DataListReadyListener listener){
         Log.d(TAG, "Get listings for category_id: "+categoryId);
         currentPage = pageNumber;
 
@@ -49,7 +49,7 @@ public class ListingRepository {
 
         isLoading = true;
 
-        API.listings(categoryId, currentPage,new Listeners.ListingsListener() {
+        API.listings(categoryId, currentPage, filter, value, new Listeners.ListingsListener() {
             @Override
             public void onSuccess(List<Listing> listings, int currentPageNumber, int lastPageNumber, int totalListings) {
                 currentPage = currentPageNumber;

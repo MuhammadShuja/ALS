@@ -25,4 +25,6 @@ public class EndPoints {
 
     public static final String USER_COUPONS_INDEX = EP_API+"/coupons";
     public static final String USER_COUPONS_UPDATE = EP_API+"/coupons/{coupon}";
+
+    public static final String USER_ORDERS_INDEX = EP_API+"/sales/orders";
 }

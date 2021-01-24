@@ -37,4 +37,5 @@ dependencies {
 
     implementation project(path: ':core')
     implementation project(path: ':pushnotifications')
+    implementation project(path: ':liveTrack')
 }

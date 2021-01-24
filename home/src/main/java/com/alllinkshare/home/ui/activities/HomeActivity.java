@@ -10,15 +10,25 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcel;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -32,7 +42,7 @@ import com.alllinkshare.auth.events.LogoutEvent;
 import com.alllinkshare.auth.events.LogoutListener;
 import com.alllinkshare.auth.ui.activities.LoginActivity;
 import com.alllinkshare.auth.ui.activities.RegisterActivity;
-import com.alllinkshare.cardealing.ui.activities.CarDealingActivity;
+import com.alllinkshare.catalog.ui.fragments.CatalogSearchFragment;
 import com.alllinkshare.catalog.ui.fragments.CategoriesBaseFragment;
 import com.alllinkshare.catalog.ui.fragments.ListingCategoriesFragment;
 import com.alllinkshare.catalog.ui.fragments.ListingDetailsFragment;
@@ -66,6 +76,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -75,6 +88,7 @@ public class HomeActivity extends AppCompatActivity {
     private static final float LOCATION_REFRESH_DISTANCE = 1000;
     private static final long LOCATION_REFRESH_TIME = 10000;
     private static final int REQUEST_CODE_PERMISSION = 111;
+    private static final int REQUEST_CODE_VOICE = 222;
 
     public final int HEADER_LANDING = 1;
     public final int HEADER_HOME = 2;
@@ -92,6 +106,11 @@ public class HomeActivity extends AppCompatActivity {
     private TextView notificationCount;
     private static int NOTIFICATION_COUNT = 0;
 
+    private SpeechRecognizer speechRecognizer;
+    private Intent speechRecognizerIntent;
+    private boolean isListening;
+    private List<String> speechResult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,10 +118,12 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         initNavigators();
+        initSearchBar();
         initPushNotifications();
         initDrawer();
         initToolbar();
         initBottomNav();
+        initVoiceInput();
 //        initLocation();
 
 //        initDemo();
@@ -146,6 +167,24 @@ public class HomeActivity extends AppCompatActivity {
             initLocation();
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case REQUEST_CODE_VOICE: {
+                if (resultCode == RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    if(!TextUtils.isEmpty(result.get(0)))
+                        Coordinator.getCoreNavigator().navigateToSearch(result.get(0));
+                }
+                break;
+            }
+
+        }
     }
 
     private void setupNotificationBadge() {
@@ -355,6 +394,7 @@ public class HomeActivity extends AppCompatActivity {
                     Coordinator.getCoreNavigator().navigateToScan();
                 } else if (id == R.id.bnav_voice) {
                     position = 3;
+                    startActivityForResult(speechRecognizerIntent, REQUEST_CODE_VOICE);
                 } else {
                     position = 0;
                 }
@@ -368,6 +408,14 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         mBottomNavigationViewEx.setSelectedItemId(R.id.bnav_home);
+    }
+
+    private void initVoiceInput(){
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
+        speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, this.getPackageName());
     }
 
     public void updateHeader(int type) {
@@ -389,6 +437,47 @@ public class HomeActivity extends AppCompatActivity {
         initShoppingNavigator();
         initRestaurantNavigator();
         initSalesNavigator();
+    }
+
+    private void initSearchBar(){
+        final EditText inputSearch = findViewById(R.id.input_search);
+        final Button btnSearch = findViewById(R.id.btn_search);
+
+        inputSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(TextUtils.isEmpty(s.toString())){
+                    btnSearch.setVisibility(View.GONE);
+                }
+                else{
+                    btnSearch.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Coordinator.getCoreNavigator().navigateToSearch(inputSearch.getText().toString().trim());
+            }
+        });
+
+        findViewById(R.id.icon_mic).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(speechRecognizerIntent, REQUEST_CODE_VOICE);
+            }
+        });
     }
 
     private void initPushNotifications() {
@@ -415,10 +504,16 @@ public class HomeActivity extends AppCompatActivity {
     private void initCoreNavigator() {
         CoreNavigator coreNavigator = new CoreNavigator() {
             @Override
+            public void navigateToSearch(String query) {
+                CatalogSearchFragment fragment = CatalogSearchFragment.newInstance(query);
+                loadFragment(fragment);
+            }
+
+            @Override
             public void navigateToHome(String fragmentToLoad) {
                 Fragment fragment;
                 if (API.isAuthenticated()) {
-                    fragment = HomeFragment.newInstance("ALSFragment");
+                    fragment = HomeFragment.newInstance("ALSFragment", null, null);
                 } else {
                     updateHeader(HEADER_LANDING);
                     fragment = LandingFragment.newInstance();
@@ -440,6 +535,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void navigateToVoice() {
 
+            }
+
+            @Override
+            public void navigateToMap(String latitude, String longitude) {
+                Fragment fragment;
+                fragment = HomeFragment.newInstance("MapFragment", latitude, longitude);
+                loadCoreFragment(fragment);
             }
         };
         Coordinator.setCoreNavigator(coreNavigator);
@@ -558,7 +660,8 @@ public class HomeActivity extends AppCompatActivity {
 //        ShoppingProductDetailsFragment fragment = ShoppingProductDetailsFragment.newInstance(6008967);
 //        ShoppingProductDetailsFragment fragment = ShoppingProductDetailsFragment.newInstance(3798060);
 //        ShoppingProductDetailsFragment fragment = ShoppingProductDetailsFragment.newInstance(63805244);
-        FoodMenuFragment fragment = FoodMenuFragment.newInstance(87);
+//        FoodMenuFragment fragment = FoodMenuFragment.newInstance(87);
+        ListingsFragment fragment = ListingsFragment.newInstance(4591);
         loadFragment(fragment);
 
 //        startActivity(new Intent(HomeActivity.this, CarDealingActivity.class));

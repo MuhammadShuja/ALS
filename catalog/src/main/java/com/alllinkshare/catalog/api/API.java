@@ -7,6 +7,7 @@ import com.alllinkshare.catalog.api.controllers.CategoriesController;
 import com.alllinkshare.catalog.api.controllers.ListingCategoriesController;
 import com.alllinkshare.catalog.api.controllers.ListingDetailsController;
 import com.alllinkshare.catalog.api.controllers.ListingsController;
+import com.alllinkshare.catalog.api.controllers.SearchController;
 
 public class API {
     private static final String TAG = "API/Catalog";
@@ -16,9 +17,14 @@ public class API {
         CategoriesController.categories(parentId, loadAll, listener);
     }
 
-    public static void listings(int categoryId, int pageNumber, Listeners.ListingsListener listener){
+    public static void listings(int categoryId, int pageNumber, String filter, String value, Listeners.ListingsListener listener){
         Log.d(TAG, "Calling listings endpoint...");
-        ListingsController.listings(categoryId, pageNumber, listener);
+        ListingsController.listings(categoryId, pageNumber, filter, value, listener);
+    }
+
+    public static void search(int pageNumber, String query, Listeners.ListingsListener listener){
+        Log.d(TAG, "Calling search endpoint...");
+        SearchController.search(pageNumber, query, listener);
     }
 
     public static void listingCategories(String type, int listingId, int pageNumber, Listeners.ListingCategoriesListener listener){

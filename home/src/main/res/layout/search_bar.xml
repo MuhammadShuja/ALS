@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:paddingTop="8dp"
@@ -33,12 +33,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
             android:textSize="14sp"
             android:hint="Search"
             android:textColor="@color/black"
             android:textColorHint="@color/grey"
             android:background="@drawable/bg_search"
             android:theme="@style/EditTextTheme"
+            android:maxLines="1"
             app:layout_constraintStart_toEndOf="@id/icon_search"
             app:layout_constraintEnd_toStartOf="@id/icon_camera"
             app:layout_constraintTop_toTopOf="parent"
@@ -69,4 +71,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             tools:ignore="ContentDescription" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
+
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="Search"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_search_btn"
+        android:textSize="12sp"
+        android:visibility="gone"
+        android:layout_gravity="end"/>
+</FrameLayout>

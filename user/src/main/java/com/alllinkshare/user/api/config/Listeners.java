@@ -4,6 +4,7 @@ import com.alllinkshare.user.models.City;
 import com.alllinkshare.user.models.Country;
 import com.alllinkshare.user.models.Coupon;
 import com.alllinkshare.user.models.FavouriteItem;
+import com.alllinkshare.user.models.Order;
 import com.alllinkshare.user.models.State;
 import com.alllinkshare.user.models.User;
 
@@ -48,6 +49,11 @@ public class Listeners {
 
     public interface CouponListener{
         void onSuccess(Coupon coupon);
+        void onFailure(String error);
+    }
+
+    public interface OrdersListener{
+        void onSuccess(List<Order> itemList, int currentPageNumber, int lastPageNumber, int totalItemCount);
         void onFailure(String error);
     }
 

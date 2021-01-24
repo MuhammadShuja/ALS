@@ -9,6 +9,7 @@ import com.alllinkshare.user.api.retrofit.responses.CouponUpdate;
 import com.alllinkshare.user.api.retrofit.responses.CouponsResponse;
 import com.alllinkshare.user.api.retrofit.responses.FavouriteRemove;
 import com.alllinkshare.user.api.retrofit.responses.FavouriteResponse;
+import com.alllinkshare.user.api.retrofit.responses.OrdersResponse;
 import com.alllinkshare.user.api.retrofit.responses.UpdateEmailReq;
 import com.alllinkshare.user.api.retrofit.responses.UpdateMobNumResponse;
 import com.alllinkshare.user.api.retrofit.responses.UpdateMobileNumber;
@@ -86,9 +87,15 @@ public class RetrofitService {
                                                    @Header("Authorization") String authorizationHeader,
                                                    @Query("item_id") int itemId);
 
+        @GET(EndPoints.USER_ORDERS_INDEX)
+        Call<OrdersResponse> getOrders(@Header("Accept") String acceptHeader,
+                                       @Header("Authorization") String authorizationHeader,
+                                       @Query("filter") String filter,
+                                       @Query("page") int pageNumber);
+
         @GET(EndPoints.USER_COUPONS_INDEX)
         Call<CouponsResponse> getCoupons(@Header("Accept") String acceptHeader,
-                                             @Header("Authorization") String authorizationHeader);
+                                         @Header("Authorization") String authorizationHeader);
 
         @GET(EndPoints.USER_COUPONS_UPDATE)
         Call<CouponEdit> editCoupon(@Header("Accept") String acceptHeader,

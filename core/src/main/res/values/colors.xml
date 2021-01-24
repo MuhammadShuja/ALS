@@ -6,11 +6,11 @@
     <color name="orange_700">#ff6d00</color>
 
     <color name="white">#FFFFFF</color>
-    <color name="white_60">#a0ffffff</color>
-    <color name="white_two">#efefef</color>
-    <color name="white_three">#ebebeb</color>
-    <color name="white_four">#e0e0e0</color>
-    <color name="white_five">#dadada</color>
+    <color name="white_two">#EEEEEE</color>
+    <color name="white_three">#DDDDDD</color>
+    <color name="white_four">#CCCCCC</color>
+    <color name="white_five">#BBBBBB</color>
+    <color name="white_six">#AAAAAA</color>
     <color name="grey">#AAAAAA</color>
 
     <color name="black">#000000</color>
@@ -26,4 +26,5 @@
     <color name="material_blue">#3B7ADE</color>
 
     <color name="bg">#f1f5f9</color>
+    <color name="error">#c30000</color>
 </resources>

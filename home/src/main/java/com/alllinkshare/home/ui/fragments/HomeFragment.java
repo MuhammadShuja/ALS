@@ -22,7 +22,10 @@ public class HomeFragment extends Fragment {
 
     private static final String FRAGMENT_TO_LOAD = "fragment";
 
-    private String fragmentToLoad;
+    private static final String VALUE_ONE = "value_one";
+    private static final String VALUE_TWO = "value_two";
+
+    private String fragmentToLoad, valueOne, valueTwo;
 
     private Fragment fragment = null;
 
@@ -34,10 +37,12 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static HomeFragment newInstance(String fragmentToLoad) {
+    public static HomeFragment newInstance(String fragmentToLoad, String valueOne, String valueTwo) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putString(FRAGMENT_TO_LOAD, fragmentToLoad);
+        args.putString(VALUE_ONE, valueOne);
+        args.putString(VALUE_TWO, valueTwo);
         fragment.setArguments(args);
         return fragment;
     }
@@ -47,6 +52,8 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             fragmentToLoad = getArguments().getString(FRAGMENT_TO_LOAD);
+            valueOne = getArguments().getString(VALUE_ONE);
+            valueTwo = getArguments().getString(VALUE_TWO);
         }
     }
 
@@ -169,7 +176,8 @@ public class HomeFragment extends Fragment {
                 break;
 
             case "MapFragment":
-                fragment = MapFragment.newInstance(null, null);
+                topTabLayout.getTabAt(3).select();
+                fragment = MapFragment.newInstance(valueOne, valueTwo);
                 break;
 
             default:
